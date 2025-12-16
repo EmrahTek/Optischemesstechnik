@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import mplcursors
 
 x = np.linspace(0,250,251)
 
@@ -24,6 +25,7 @@ plt.xlabel("0-250 mmHG")
 plt.ylabel("Gaus funktion")
 plt.grid()
 plt.legend()
-
+#lines = ax.plot(x,gaus_1,x,gaus_2,x,gaus_3, linewidth  = 2)
+#mplcursors.cursor(lines)
 
 plt.show()
