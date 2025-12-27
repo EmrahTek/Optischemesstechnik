@@ -6,8 +6,8 @@ x = np.linspace(0,250,251)
 
 mu = 127
 sigma_1 = 7
-sigma_2 = 4.5
-sigma_3 = 1.5
+sigma_2 = 3.5
+sigma_3 = 14
 
 gaus_1 = (1 / (sigma_1* np.sqrt(2*np.pi))) * (np.exp(-(x - mu)**2 / (2*sigma_1**2) ))
 gaus_2 = (1 / (sigma_2* np.sqrt(2*np.pi))) * (np.exp(-(x - mu)**2 / (2*sigma_2**2) ))
