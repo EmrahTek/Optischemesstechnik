@@ -23,7 +23,6 @@ plt.figure(2)
 plt.plot(position, diffphotoI_ML, '-o')  # plot parameters
 plt.xlabel('Distanz(mm)')  # labeling axis
 plt.ylabel('differenz. Photostrom (mA)')  # labeling axis
-
 plt.show()
 
 
