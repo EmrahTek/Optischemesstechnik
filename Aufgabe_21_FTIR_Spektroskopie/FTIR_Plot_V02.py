@@ -20,7 +20,7 @@ Spektrum = np.fft.fft(Intensitaet)
 DeltaT = Zeitachse[2] - Zeitachse[1]
 N = len(Zeitachse)
 DeltaNu = 1 / (DeltaT*N)
-Frequenzachse = DeltaNu*np.linspace(0,N//2 + 1, N//2)
+Frequenzachse = DeltaNu*np.linspace(0,N//2 + 1, N//2) # floor division demek.
 Spektrum = np.abs(Spektrum[0: N // 2])
 plt.figure(2)
 plt.plot(Frequenzachse,Spektrum)
