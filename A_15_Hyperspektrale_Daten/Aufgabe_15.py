@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 from mpl_toolkits.mplot3d import Axes3D
-data_path = Path("C:\\Users\\emrah\\OneDrive\\Desktop\\Photonic Studium\\5. Semester 2025 - 2026\\Optischemesstechnik_1\\Aufgabe_Python\\Aufgabe_15\\Redye_demo_spektrum_vertical.txt")
+data_path = Path("/home/emrahtek/Schreibtisch/CodeLab/Optischmesstechnik_1/A_15_Hyperspektrale_Daten/Redye_demo_spektrum_vertical.txt")
 data = np.loadtxt(data_path, skiprows=42)
 
 x_start = 66
