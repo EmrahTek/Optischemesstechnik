@@ -61,50 +61,50 @@ plt.imshow(Material2)
 plt.title(f'{wavelength[plotindex_2]} nm')
 
 plt.tight_layout()
+# plt.show()
+
+
+# create matplotlib 3D plot for visualization of the hypercube
+X, Y = np.meshgrid(range(0, x_n), range(0, y_n))
+fig = plt.figure()
+ax = fig.add_subplot(111, projection="3d")
+for kk in range(0, len(wavelength)-20, 10):
+    ax.contourf(X, Y, datacube[:,:,kk], 100, zdir='z', offset=wavelength[kk], alpha=0.1)
+ax.set_zlim((800,1800))
 plt.show()
-
-
-## create matplotlib 3D plot for visualization of the hypercube
-#X, Y = np.meshgrid(range(0, x_n), range(0, y_n))
-#fig = plt.figure()
-#ax = fig.add_subplot(111, projection="3d")
-#for kk in range(0, len(wavelength)-20, 10):
-#    ax.contourf(X, Y, datacube[:,:,kk], 100, zdir='z', offset=wavelength[kk], alpha=0.1)
-#ax.set_zlim((800,1800))
-#plt.show()
 
 
 ## create plotly 3D plot for visualization of the hypercube as html
 ## ($ pip3 install plotly==5.24.1)
-#import plotly.graph_objects as go
-#q = 4  # reduze number of points along all axes by this factor (otherwise the html gets ~200MB)
-#X, Y, Z = np.mgrid[x_start:x_end:(x_n*1j/q), y_start:y_end:(y_n*1j/q), wavelength[0]:wavelength[-1]:(len(wavelength)*1j/q)]
-#values = np.swapaxes(datacube[::q, ::q, ::q], 0, 1)
-#fig = go.Figure(data=go.Volume(
-#    x=X.flatten(),
-#    y=Y.flatten(),
-#    z=Z.flatten(),
-#    value=values.flatten(),
-#    isomin=np.min(values),
-#    isomax=np.max(values),
-#    opacity=0.2, # needs to be small to see through all surfaces
-#    surface_count=5, # needs to be a large number for good volume rendering
-#    slices_z=dict(show=True, locations=[wavelength[plotindex_1], wavelength[plotindex_2]]),
-#    colorscale="Viridis",
-#    ))
-##fig.show()
-#fig.write_html("Redye_demo_spektrum_vertical.html")
+import plotly.graph_objects as go
+q = 4  # reduze number of points along all axes by this factor (otherwise the html gets ~200MB)
+X, Y, Z = np.mgrid[x_start:x_end:(x_n*1j/q), y_start:y_end:(y_n*1j/q), wavelength[0]:wavelength[-1]:(len(wavelength)*1j/q)]
+values = np.swapaxes(datacube[::q, ::q, ::q], 0, 1)
+fig = go.Figure(data=go.Volume(
+    x=X.flatten(),
+    y=Y.flatten(),
+    z=Z.flatten(),
+    value=values.flatten(),
+    isomin=np.min(values),
+    isomax=np.max(values),
+    opacity=0.2, # needs to be small to see through all surfaces
+    surface_count=5, # needs to be a large number for good volume rendering
+    slices_z=dict(show=True, locations=[wavelength[plotindex_1], wavelength[plotindex_2]]),
+   colorscale="Viridis",
+   ))
+fig.show()
+fig.write_html("Redye_demo_spektrum_vertical.html")
 
 
 ## create a movie with wavelength as time axis (linux)
-#import matplotlib.animation as animation
-#fps = 30
-#fig = plt.figure()
-#im  = plt.imshow(datacube[:, :, 0], interpolation='none', aspect='auto', vmin=np.min(datacube), vmax=np.max(datacube))
-#anim = animation.FuncAnimation(
-#                               fig,
-#                               lambda i: [im.set_array(datacube[:, :, i])],
-#                               frames = len(wavelength),
-#                               interval = 1000 / fps, # in ms
-#                               )
-#anim.save('Redye_demo_spektrum_vertical.mp4', fps=fps, extra_args=['-vcodec', 'libx264'])
+import matplotlib.animation as animation
+fps = 30
+fig = plt.figure()
+im  = plt.imshow(datacube[:, :, 0], interpolation='none', aspect='auto', vmin=np.min(datacube), vmax=np.max(datacube))
+anim = animation.FuncAnimation(
+                               fig,
+                               lambda i: [im.set_array(datacube[:, :, i])],
+                               frames = len(wavelength),
+                               interval = 1000 / fps, # in ms
+                               )
+anim.save('Redye_demo_spektrum_vertical.mp4', fps=fps, extra_args=['-vcodec', 'libx264'])
