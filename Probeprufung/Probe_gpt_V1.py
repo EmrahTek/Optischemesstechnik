@@ -1,3 +1,13 @@
+"""
+Autor: Emrah Tekin
+Date: 02.01.2026
+
+"""
+
+
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
