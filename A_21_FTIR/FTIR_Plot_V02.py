@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 
-FTIR_PATH = Path("/home/emrahtek/Schreibtisch/CodeLab/Optischmesstechnik_1/Aufgabe_21_FTIR_Spektroskopie/FTIR_Daten.txt")
+FTIR_PATH = Path("/home/emrahtek/Schreibtisch/CodeLab/Optischmesstechnik_1/A_21_FTIR/FTIR_Daten.txt")
 
 FTIR_Data = np.loadtxt(FTIR_PATH, delimiter='\t',dtype=float)
 
