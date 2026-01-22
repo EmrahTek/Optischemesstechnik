@@ -22,4 +22,9 @@ plt.ylabel('Drehwinkel')
 Steigung = p[0]
 
 print("Steigung: ", Steigung)
+
+Brix_15 = (yfit - p[1])/Brix_data
+
+print("Brix",Brix_15)
+
 plt.show()
